@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Row, Nav, Tab } from "react-bootstrap";
 import app from "@/app.json";
 import { getAllArtDocuments } from "@/lib/firebase";
-
+import Loading from "@/app/loading";
 function Gallery() {
-  const path = useSearchParams();
+  const [loading, setLoading] = useState(() => true);
   const [artDocuments, setArtDocuments] = useState([]);
   const [artData, setArtData] = useState({});
   const [isOpen, setOpen] = useState(!!artData);
@@ -29,19 +29,23 @@ function Gallery() {
   }, [artData]);
   useEffect(() => {
     const fetchArtDocuments = async () => {
+      setLoading(true);
       try {
         const documents = await getAllArtDocuments();
         setArtDocuments(documents);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching art documents:", error.message);
+        setLoading(false);
       }
     };
 
     fetchArtDocuments();
   }, []);
-  console.log(artData);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <>
       {isOpen && (
         <div className="overlay-window gallery-overlay colors-g background-95-g show">
