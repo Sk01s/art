@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "label": "Figurative Paintings",
+      "value": "figurative-paintings"
+    },
+    {
+      "label": "Abstract Paintings",
+      "value": "abstract-paintings"
+    },
+    {
+      "label": "Work on paper",
+      "value": "work-on-paper"
+    },
+    {
+      "label": "Installation & Sculpture",
+      "value": "installation-&-sculpture"
+    },
+    {
+      "label": "Photography",
+      "value": "photography"
+    },
+    {
+      "label": "Media",
+      "value": "media"
+    }
+  ]
+}
